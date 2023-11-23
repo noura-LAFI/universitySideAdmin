@@ -1,0 +1,90 @@
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          [class.active]="showProfApprovedTable"
+          (click)="toggleProfApproved()"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+        >
+          {{ "professor.approved" | translate }}
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          [class.active]="!showProfApprovedTable"
+          (click)="toggleProfInapproved()"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+        >
+          {{ "professor.notApproved" | translate }}
+        </button>
+      </li>
+    </ul>
+  
+<div class="card shadow border-0 mt-3">
+  <div class="card-body m-4">
+      <table datatable  [dtOptions]="dtOptions" *ngIf="showProfApprovedTable" class="table table-user table-hover table-sm table-responsive m-4" >
+        <thead>
+          <tr>
+            <th class="td-min-width"></th>
+            <th class="td-min-width">{{'UserInfo.FirstName' | translate}}</th>
+            <th class="td-min-width">{{'UserInfo.LastName' | translate}}</th>
+            <th class="td-min-width">{{'UserInfo.EmailAddress' | translate}}</th>
+            <th class="td-min-width">{{'classes.delete' | translate}} </th>
+            <th class="td-min-width">{{'classes.enable' | translate}} </th>
+          </tr>
+        </thead>
+        <tbody class="mb-4">
+          <tr *ngFor="let item of data">
+            <td class="td-min-width">
+              <i class="fa fa-circle text-danger" aria-hidden="true" style="font-size: 10px;"></i>
+            </td>
+            <td class="td-min-width">{{item.firstName}}</td>
+            <td class="td-min-width">{{item.lastName}}</td>
+            <td class="td-min-width">{{item.lastName}}</td>
+            <td class="td-min-width text-danger">
+              <a><i class="fa fa-times-circle" aria-hidden="true" style="font-size: 15px;"></i></a>
+            </td>
+            <td class="td-min-width text-success">
+              <a><i class="fa fa-check-circle " aria-hidden="true" style="font-size: 15px;"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    <table *ngIf="!showProfApprovedTable" datatable  [dtOptions]="dtOptions" class="table table-user table-hover table-sm table-responsive m-4" >
+      <thead>
+        <tr>
+          <th class="td-min-width"></th>
+          <th class="td-min-width">{{'UserInfo.FirstName' | translate}}</th>
+          <th class="td-min-width">{{'UserInfo.LastName' | translate}}</th>
+          <!-- <th class="td-min-width">{{'UserInfo.EmailAddress' | translate}}</th> -->
+          <th class="td-min-width" >{{'classes.delete' | translate}}</th>
+          <th class="td-min-width" > {{'classes.disable' | translate}}</th>
+
+        </tr>
+      </thead>
+      <tbody class="mb-4">
+        <tr *ngFor="let item of data">
+          <td class="td-min-width">
+            <i class="fa fa-circle text-success" aria-hidden="true" style="font-size: 10px;"></i>
+          </td>
+          <td class="td-min-width">{{item.firstName}}</td>
+          <td class="td-min-width">{{item.lastName}}</td>
+          <!-- <td class="td-min-width">{{item.lastName}}</td> -->
+          <td class="td-min-width text-danger" >
+            <a><i class="fa fa-times-circle" aria-hidden="true" style="font-size: 15px;"></i></a>
+          </td>
+          <td class="td-min-width text-secondary" >
+            <a><i class="fa fa-times-circle" aria-hidden="true" style="font-size: 15px;"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

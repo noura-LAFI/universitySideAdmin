@@ -1,0 +1,53 @@
+<div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        (click)="addClasse()"
+        class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-5"
+      >
+        {{ "classes.addClasse" | translate }} <i class="fa fa-add me-2"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-12 wow fadeInUp mx-auto" data-wow-delay="0.5s">
+        <div class="bg-light rounded p-5 table-responsive">
+          <table
+            datatable
+            [dtOptions]="dtOptions"
+            [dtTrigger]="dtTrigger"
+            id="tableT"
+            class="table table-bordered table-responsive mt-5"
+          >
+            <thead>
+              <tr>
+                <th class="td-min-width">
+                  {{ "classes.className" | translate }}
+                </th>
+                <th class="td-min-width">
+                  {{ "classes.buildingName" | translate }}
+                </th>
+                <th class="td-min-width">
+                  {{ "classes.details" | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data">
+                <td id="name" class="td-min-width">{{ item.name }}</td>
+                <td class="td-min-width">{{ item.building }}</td>
+                <td class="td-min-width text-info">
+                  <a><i class="fa fa-circle-info"></i></a
+                  ><a><i class="fa fa-times-circle"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
